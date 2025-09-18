@@ -102,12 +102,12 @@ be useful.
 \section{Characteristic form}
 For the homogeneous hyperbolic part of KdVH, the eigenvalues of the flux Jacobian are
 \begin{align}
-    \lambda_0 & = -1/\tau \\
-    \lambda_\pm & = \frac{u}{2} \pm \frac{\sqrt{u^2 +4/\tau}}{2}.
+    \lambda_0 & = -1/\tau_1 \\
+    \lambda_\pm & = \frac{u}{2} \pm \frac{\sqrt{u^2 +4/\tau_2}}{2}.
 \end{align}
 The Riemann invariants are given by $v$ and
 \begin{align}
-\nu_\pm & = w + \frac{u}{2} \lambda_\pm \pm \frac{\log(\lambda_+)}{\tau}.
+\nu_\pm & = w + \frac{u}{2} \lambda_\pm \pm \frac{\log(\lambda_+)}{\tau_2}.
 \end{align}
 Note that the system has two genuinely nonlinear fields and one linearly
 degenerate field.
@@ -115,8 +115,8 @@ degenerate field.
 In terms of these quantities, the full system \eqref{kdvh} can be written
 \begin{subequations}
 \begin{align}
-    v_t - \frac{1}{\tau} v_x & = -\frac{1}{\tau} w \\
-    (\nu_\pm)_t + \lambda_\pm (\nu_\pm)_x & = \frac{1}{\tau} v.
+    v_t - \frac{1}{\tau_1} v_x & = -\frac{1}{\tau_1} w \\
+    (\nu_\pm)_t + \lambda_\pm (\nu_\pm)_x & = \frac{1}{\tau_2} v.
 \end{align}
 \end{subequations}
 It may be useful to express $w$ in terms of the Riemann invariants
@@ -124,10 +124,11 @@ in order to better understand this system.
 
 
 
+
 \section{Regularity results}
 
 Following Dafermos \cite[Section~5.2]{dafermos2010hyperbolic}, we write the KdVH system \eqref{kdvh} as
-\begin{equation}
+\begin{equation}\label{eq:kdvh_con}
 \begin{aligned}
     \partial_t U + \partial_x G(U) + P(U) &= 0, && x \in \mathbb{R}, t > 0, \\
     U(x, 0) &= U_0(x), && x \in \mathbb{R},
@@ -147,7 +148,7 @@ Furthermore,
     \eta(U) = \frac{1}{2} u^2 + \frac{\tau_1}{2} v^2 + \frac{\tau_2}{2} w^2
 \end{equation}
 is a uniformly convex entropy satisfying
-\begin{equation}
+\begin{equation}\label{eq:kdvh_entropyeq}
     \partial_t \eta(U) + \partial_x Q(U) + \underbrace{\eta'(U) P(U)}_{= 0} = 0,
 \end{equation}
 where
@@ -216,6 +217,71 @@ This sheds more light on how the convergence of (possibly discontinuous, weak en
 Indeed, for given initial data, there are critical thresholds for $\tau_1, \tau_2$ below which there are only classical solutions on KdVH.
 
 Using the scaling symmetry \eqref{eq:scaling} the other way round, we notice that KdVH may have discontinuous solutions for any $\tau_1, \tau_2 > 0$ as long as the initial data are sufficiently big (in the sense of $\| U_0 \|_{H^\ell}$ not being small).
+
+
+\section{Discontinuous solutions}
+
+
+The conservative form \eqref{eq:kdvh_con} of KDVH system, as well as the entropy balance \eqref{eq:kdvh_entropyeq} can be used to characterize
+discontinuous solutions which may appear when the initial data  does not satisfy conditions of theorems 4.1 and 4.2.  If existing,  discontinuities of \eqref{eq:kdvh_con}
+travelling at  speed $C$  should verify the classical conditions  (add ref ?)
+\begin{equation}\label{eq:shock-conditions}
+\begin{aligned}
+-C [\![ U]\!] & +  [\![ G]\!] =0 \\[5pt]
+-C [\![ \eta]\!] & +  [\![ Q]\!] = \le 0
+\end{aligned}
+\end{equation}
+where  the equal sign in the second condition applies to  linearly degenerate  discontinuities. The first above provides the following system:
+\begin{equation} 
+\begin{aligned}
+-C [\![ u]\!] & +  [\![  \dfrac{u^2}{2} + w]\!] =0 \\[5pt]
+-C [\![ v]\!] & -\dfrac{1}{\tau_1}  [\![   v]\!] =0 \\[5pt]
+-C [\![ w]\!] & +\dfrac{1}{\tau_2}  [\![  u]\!] =0 
+\end{aligned}
+\end{equation}
+From this system we can  deduce the existence of two families of solutions. To see this, we recast the above identities as  
+\begin{equation}\label{eq:RH}
+\begin{aligned}
+-  [\![ u]\!]  &( C- { \overline u} -\dfrac{1}{\tau_2 C}    )=0   \\[5pt]
+-  [\![ v]\!]  &( C+ \dfrac{1}{\tau_1}  )=0   \\[5pt]
+\tau_2 C  [\![ w]\!] & =   [\![ u]\!]
+\end{aligned}
+\end{equation}
+with $\overline{(\cdot)}$ denoting the arithmetic average between the right and left states.
+
+The first two  relations provide two different compatibility conditions. 
+One of these only allows for  discontinuities of $v$, and  it requires  the shock speed to be given by the speed of the linearly degenerate Riemann invariant $\nu_0=v$:
+\begin{equation}
+  C = - \dfrac{1}{\tau_1}.  
+\end{equation}
+ If this is the case,   from the first and last in \eqref{eq:RH}   we deduce $[\![ u]\!] =[\![ w]\!] =0 $. This is essentially a contact discontinuity  moving at speed $C=\lambda_0$.
+ Being a linearly degenerated discontinuity, we expect the second in \eqref{eq:shock-conditions} to hold with an equal sign. This can be easily verified: 
+\begin{equation}
+-C [\![\eta ]\!]  +  [\![ Q ]\!] =  - (\tau_1 C + 1) {\overline  v }  [\![ v ]\!] = 0
+\end{equation}
+for any value of the initial data since $\tau_1 C + 1$ vanishes. \\
+
+The second family of discontinuities is genuinely nonlinear and associated to the compatibility condition 
+\begin{equation}
+C- { \overline u} -\dfrac{1}{\tau_2 C} =0 \Rightarrow   C^2 - { \overline u} C  -\dfrac{1}{\tau_2 } =0.
+\end{equation}
+The above quadratic equation has    roots given by 
+\begin{equation}
+C_{\pm} = \dfrac{\overline u}{2} \pm \dfrac{1}{2} \sqrt{{\overline u}^2 +\dfrac{4}{\tau_2} }
+\end{equation}
+which are associated to the genuinely nonlinear fields $\nu_{\pm}$. When $C$ is given by one of the above roots, one easily sees that the previous compatibility relation implies $ [\![ v ]\!]=0$.  For these discontinuities we expect the condition on the entropy in \eqref{eq:shock-conditions} to be an inequality. This needs to be checked and may provide
+admissibility conditions for the initial data. We thus write
+\begin{equation}
+\begin{aligned}
+-C [\![\eta ]\!]  & +  [\![ Q ]\!] =  \text{to be continued ..}
+\end{aligned}
+\end{equation}
+
+
+
+
+
+
 
 \todo{TODO: Check well-posedness results for KdV}
 

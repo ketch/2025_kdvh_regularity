@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{geometry}
 
 \newcommand{\order}{{\mathcal O}}
 
@@ -88,6 +89,34 @@ It may be useful to express $w$ in terms of the Riemann invariants
 in order to better understand this system.
 
 \section{Some numerical results}
+
+The results currently included here are computed using a 1st-order HLL solver.  It should be
+kept in mind that this is quite dissipative so longer-time solutions will not be accurate.
+
+For all of these solutions the initial condition is
+\begin{align}
+    u(x,t=0) = 2 \exp(-x^2/50).
+\end{align}
+
+In Figure \ref{fig:convergence}, we observe visual convergence to the KdV solution as
+$\tau$ is decreased.
+
+\begin{figure}
+\centering
+    \includegraphics[width=4in]{figures/Convergence.png}
+    \caption{Convergence of KdVH solutions to KdV.\label{fig:convergence}}
+\end{figure}
+
+In Figure \ref{fig:shocks}, we observe the clear appearance of shocks for $\tau=1$, while
+the solution for $\tau=1/10$ is clearly devoid of shocks.
+
+\begin{figure}
+\centering
+    \includegraphics[width=6in]{figures/KdVH_solutions.png}
+    \caption{Comparison of solutions at $t=16$.  In the last plot, the KdV solution is included (dashed black line)
+    for comparison.\label{fig:shocks}}
+\end{figure}
+
 
 \end{document}
 

@@ -1,9 +1,42 @@
 \documentclass{article}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{amsthm}
+\theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{conjecture}[theorem]{Conjecture}
+  \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{remark}[theorem]{Remark}
+  \newtheorem{example}[theorem]{Example}
+  \newtheorem{procedure}[theorem]{Procedure}
+  \newtheorem{assumption}[theorem]{Assumption}
+\numberwithin{theorem}{section}
+
+\usepackage{color}
 \usepackage{graphicx}
 
+% bibliography
+\usepackage[%
+  backend=bibtex,bibencoding=ascii,
+  style=numeric-comp,
+  giveninits=true, uniquename=init, %abbreviate first names
+  natbib=true,
+  url=true,
+  doi=true,
+  isbn=false,
+  backref=false,
+  maxnames=99,
+  ]{biblatex}
+\addbibresource{references.bib}
+
 \newcommand{\order}{{\mathcal O}}
+\newcommand{\todo}[1]{{\Large{\color{red}{#1}}}}
 
 
 \title{Notes on analysis of the KdVH equation}
@@ -27,6 +60,7 @@ We will often take $\tau_1 = \tau_2 = \tau$.
 The system \eqref{kdvh} is invariant under the following
 transformation, for any $\epsilon>0$:
 \begin{subequations}
+\label{eq:scaling}
 \begin{align}
     \tau_1 & \to \epsilon^2 \tau_1 & \tau_2 & \to \epsilon^4 \tau_2 \\
     x & \to \epsilon x & t & \to \epsilon^3 t \\
@@ -87,7 +121,123 @@ In terms of these quantities, the full system \eqref{kdvh} can be written
 It may be useful to express $w$ in terms of the Riemann invariants
 in order to better understand this system.
 
+
+
+\section{Regularity results}
+
+Following Dafermos \cite[Section~5.2]{dafermos2010hyperbolic}, we write the KdVH system \eqref{kdvh} as
+\begin{equation}
+\begin{aligned}
+    \partial_t U + \partial_x G(U) + P(U) &= 0, && x \in \mathbb{R}, t > 0, \\
+    U(x, 0) &= U_0(x), && x \in \mathbb{R},
+\end{aligned}
+\end{equation}
+where $U = (u, v, w)^T$, the flux function is
+\begin{equation}
+    G(U) = \left( \frac{1}{2} u^2 + w, -\tau_1^{-1} v, \tau_2^{-1} u \right)^T,
+\end{equation}
+and the source term is
+\begin{equation}
+    P(U) = \left( 0, \tau_1^{-1} w, -\tau_2^{-1} v \right)^T.
+\end{equation}
+In their notation, $\overline{U} = 0$ is indeed a constant equilibrium.
+Furthermore,
+\begin{equation}
+    \eta(U) = \frac{1}{2} u^2 + \frac{\tau_1}{2} v^2 + \frac{\tau_2}{2} w^2
+\end{equation}
+is a uniformly convex entropy satisfying
+\begin{equation}
+    \partial_t \eta(U) + \partial_x Q(U) + \underbrace{\eta'(U) P(U)}_{= 0} = 0,
+\end{equation}
+where
+\begin{equation}
+    Q(U) = \frac{1}{6} u^3 + u w - \frac{1}{2} v^2
+\end{equation}
+is the associated entropy flux. Note that
+\begin{equation}
+    P'(U) = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & \tau_1^{-1} \\
+        0 & -\tau_2^{-1} & 0
+    \end{pmatrix}.
+\end{equation}
+Thus, the source term $P$ is not strongly dissipative in the sense of \cite[Section~5.2, p.~109]{dafermos2010hyperbolic}.
+However, the assumption \cite[(5.2.12)]{dafermos2010hyperbolic} is satisfied for $\tau_1 \ne 0 \ne \tau_2$, i.e.,
+\begin{equation}
+    P'(\overline{U}) R_i(\overline{U}) \ne 0, \qquad i \in \{1, 2, 3\},
+\end{equation}
+since the eigenvectors $R_i$ of the flux Jacobian $G'(U)$ are \cite{besse2022perfectly}
+\begin{equation}
+    \begin{pmatrix}
+        0 \\ 1 \\ 0
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+        *_+ \\ 0 \\ 1
+    \end{pmatrix},
+    \quad
+    \begin{pmatrix}
+        *_- \\ 0 \\ 1
+    \end{pmatrix}.
+\end{equation}
+Thus, \cite[Theorem~5.2.1]{dafermos2010hyperbolic} applies, and we obtain the following result.
+\begin{theorem}
+\label{thm:small_data}
+    Let
+    $\tau_1, \tau_2 > 0$,
+    $\ell > 1$,
+    $U_0 \in L^2(\mathbb{R})$,
+    $\nabla U_0 \in H^\ell$, and
+    $\|\nabla U_0\|_{H^\ell}$ be sufficiently small.
+    Then, there is a unique global classical solution $U$ of the Cauchy problem for the KdVH system \eqref{kdvh}.
+\end{theorem}
+
+By using the scaling symmetry \eqref{eq:scaling}, we can also obtain a similar result for large initial data, but small $\tau_1, \tau_2$.
+\begin{theorem}
+\label{thm:small_tau}
+    Let
+    $U_0 \in L^2(\mathbb{R})$ and
+    $\nabla U_0 \in H^1$.
+    Then, there are $\tau_1, \tau_2 > 0$ sufficiently small such that
+    there is a unique global classical solution $U$ of the Cauchy problem for the KdVH system \eqref{kdvh}.
+\end{theorem}
+\begin{proof}
+    Applying the scaling \eqref{eq:scaling} yields
+    \begin{equation}
+        \| \nabla u_0 \|_{L^2} \mapsto \epsilon^{3/2} \| \nabla u_0 \|_{L^2}, \qquad
+        | \nabla u_0 |_{H^1} \mapsto \epsilon^{1/2} | \nabla u_0 |_{H^1}.
+    \end{equation}
+    The other components $v_0, w_0$ behave in the same way if they are initialized with well-prepared initial data, i.e., $v_0 = \partial_x u_0$ and $w_0 = \partial_{xx} u_0$.
+    Thus, we can choose $\epsilon$ (and consequently $\tau_1$ and $\tau_2$) sufficiently small such that $\|\nabla U_0\|_{H^1}$ is sufficiently small after the scaling to apply Theorem~\ref{thm:small_data}.
+\end{proof}
+
+This sheds more light on how the convergence of (possibly discontinuous, weak entropy) solutions of KdVH to smooth solutions of KdV as $\tau_1, \tau_2 \to 0$ \cite[Theorem~3.2]{giesselmann2025convergence} happens.
+Indeed, for given initial data, there are critical thresholds for $\tau_1, \tau_2$ below which there are only classical solutions on KdVH.
+
+Using the scaling symmetry \eqref{eq:scaling} the other way round, we notice that KdVH may have discontinuous solutions for any $\tau_1, \tau_2 > 0$ as long as the initial data are sufficiently big (in the sense of $\| U_0 \|_{H^\ell}$ not being small).
+
+
 \section{Some numerical results}
+
+\todo{TODO}
+
+
+
+\section{Summary and discussion}
+
+\todo{TODO}
+
+
+
+\appendix
+
+\section*{Acknowledgments}
+
+\todo{TODO: funding}
+% \input{funding}
+
+
+\printbibliography
 
 \end{document}
 

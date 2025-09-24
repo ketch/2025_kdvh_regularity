@@ -70,6 +70,29 @@ transformation, for any $\epsilon>0$:
 \end{align}
 \end{subequations}
 
+\begin{proposition}
+Consider the Cauchy problem for \eqref{kdvh} and let $\epsilon>0$.
+Let $q^\epsilon=[u^\epsilon(x,t),v^\epsilon(x,t),w^\epsilon(x,t)$ denote the
+solution to the problem with $\tau_1=\epsilon^2, \tau_2=\epsilon^4$ and
+initial data
+\begin{subequations} \label{scaled-ic}
+\begin{align}
+    u(x,t=0) & = \epsilon^{-2} u_0(x/\epsilon) \\
+    v(x,t=0) & = \epsilon^{-3} v_0(x/\epsilon) \\
+    w(x,t=0) & = \epsilon^{-4} w_0(x/\epsilon).
+\end{align}
+\end{subequations}
+Then we have
+\begin{subequations}
+\begin{align}
+    u^{\epsilon}(x,t) & = \epsilon^{-2} u^1(\epsilon^{-1} x, \epsilon^{-3} t) \\
+    v^{\epsilon}(x,t) & = \epsilon^{-3} v^1(\epsilon^{-1} x, \epsilon^{-3} t) \\
+    w^{\epsilon}(x,t) & = \epsilon^{-4} w^1(\epsilon^{-1} x, \epsilon^{-3} t).
+\end{align}
+\end{subequations}
+\end{proposition}
+Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value of
+$\epsilon$, the initial data \eqref{scaled-ic} is well-prepared for any value of $\epsilon$.
 
 \section{Asymptotic expansion}
 We assume there exist power series for $u, v, w$ in terms of $\tau$:

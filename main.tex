@@ -47,7 +47,6 @@
 \maketitle
 
 The KdVH system is
-
 \begin{subequations} \label{kdvh}
 \begin{align}
     u_t + uu_x + w_x & = 0 \\
@@ -55,7 +54,8 @@ The KdVH system is
     \tau_2 w_t + u_x & = v.
 \end{align}
 \end{subequations}
-We will often take $\tau_1 = \tau_2 = \tau$.
+When it is necessary to specify the values of $\tau_1, \tau_2$ we will
+refer to KdVH$(\tau_1,\tau_2)$.
 
 \section{Scaling symmetry}
 The system \eqref{kdvh} is invariant under the following
@@ -70,11 +70,10 @@ transformation, for any $\epsilon>0$:
 \end{align}
 \end{subequations}
 
-\begin{proposition}
+\begin{proposition}\label{prop:scaling}
 Consider the Cauchy problem for \eqref{kdvh} and let $\epsilon>0$.
-Let $q^\epsilon=[u^\epsilon(x,t),v^\epsilon(x,t),w^\epsilon(x,t)$ denote the
-solution to the problem with $\tau_1=\epsilon^2, \tau_2=\epsilon^4$ and
-initial data
+Let $q^\epsilon=[u^\epsilon,v^\epsilon,w^\epsilon]^T$ denote the
+solution of KdVH$(\epsilon^2,\epsilon^4)$ with initial data
 \begin{subequations} \label{scaled-ic}
 \begin{align}
     u(x,t=0) & = \epsilon^{-2} u_0(x/\epsilon) \\
@@ -209,9 +208,8 @@ Thus, \cite[Theorem~5.2.1]{dafermos2010hyperbolic} applies, and we obtain the fo
 \begin{theorem}
 \label{thm:small_data}
     Let
-    $\tau_1, \tau_2 > 0$,
-    $\ell > 1$,
-    $U_0 \in L^2(\mathbb{R})$,
+    $\tau_1, \tau_2 > 0$ and $\ell > 1$.
+    Let $U_0 \in L^2(\mathbb{R})$,
     $\nabla U_0 \in H^\ell$, and
     $\|\nabla U_0\|_{H^\ell}$ be sufficiently small.
     Then, there is a unique global classical solution $U$ of the Cauchy problem for the KdVH system \eqref{kdvh}.
@@ -227,7 +225,14 @@ By using the scaling symmetry \eqref{eq:scaling}, we can also obtain a similar r
     there is a unique global classical solution $U$ of the Cauchy problem for the KdVH system \eqref{kdvh}.
 \end{theorem}
 \begin{proof}
-    Applying the scaling \eqref{eq:scaling} yields
+%    In order to apply Theorem \ref{thm:small_data} we should fix $\tau_1, \tau_2$; for concreteness
+%    let us take $\tau_1=\tau_2=1$.  
+    Let $u_0^\epsilon(x,t)$ denote the solution of
+    KdVH$(\epsilon^2,\epsilon^4)$ with the fixed initial data $u_0(x)$.  By
+    Proposition \ref{prop:scaling}, $u_0^\epsilon(x,t)$ is identical, up to
+    rescaling $x$ and $t$, to the solution of KdVH(1,1) but with initial data
+    $\tilde{u} = \epsilon^2 u_0(\epsilon x)$.  Thus $\partial_x u_0$ scales like $\epsilon^3$,
+    so
     \begin{equation}
         \| \nabla u_0 \|_{L^2} \mapsto \epsilon^{3/2} \| \nabla u_0 \|_{L^2}, \qquad
         | \nabla u_0 |_{H^1} \mapsto \epsilon^{1/2} | \nabla u_0 |_{H^1}.

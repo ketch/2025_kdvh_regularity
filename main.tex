@@ -113,13 +113,13 @@ $\order(\tau^0)$:
 
 (fill in the rest of the derivation here)
 
-Finally we obtain (KdVH1)
+Finally, we obtain (KdVH1)
 \begin{align} \label{kdvh1}
     u_t + u u_x + u_{xxx} - \tau\left(u-u_{xx}  \right)_{xxt} - \tau^2\left(2u-u_{xx}\right)_{xxxtt} & = \order(\tau^3).
 \end{align}
-
 It would be straightforward to obtain additional terms in this equation if we think that would
 be useful.
+The expansion including only the $O(\tau)$ term was given in \cite[eq.~(14)]{besse2022perfectly}.
 
 \section{Characteristic form}
 For the homogeneous hyperbolic part of KdVH, the eigenvalues of the flux Jacobian are
@@ -226,7 +226,7 @@ By using the scaling symmetry \eqref{eq:scaling}, we can also obtain a similar r
 \end{theorem}
 \begin{proof}
 %    In order to apply Theorem \ref{thm:small_data} we should fix $\tau_1, \tau_2$; for concreteness
-%    let us take $\tau_1=\tau_2=1$.  
+%    let us take $\tau_1=\tau_2=1$.
     Let $u_0^\epsilon(x,t)$ denote the solution of
     KdVH$(\epsilon^2,\epsilon^4)$ with the fixed initial data $u_0(x)$.  By
     Proposition \ref{prop:scaling}, $u_0^\epsilon(x,t)$ is identical, up to
@@ -260,14 +260,14 @@ travelling at  speed $C$  should verify the classical conditions  (add ref ?)
 \end{aligned}
 \end{equation}
 where  the equal sign in the second condition applies to  linearly degenerate  discontinuities. The first above provides the following system:
-\begin{equation} 
+\begin{equation}
 \begin{aligned}
 -C [\![ u]\!] & +  [\![  \dfrac{u^2}{2} + w]\!] =0 \\[5pt]
 -C [\![ v]\!] & -\dfrac{1}{\tau_1}  [\![   v]\!] =0 \\[5pt]
--C [\![ w]\!] & +\dfrac{1}{\tau_2}  [\![  u]\!] =0 
+-C [\![ w]\!] & +\dfrac{1}{\tau_2}  [\![  u]\!] =0
 \end{aligned}
 \end{equation}
-From this system we can  deduce the existence of two families of solutions. To see this, we recast the above identities as  
+From this system we can  deduce the existence of two families of solutions. To see this, we recast the above identities as
 \begin{equation}\label{eq:RH}
 \begin{aligned}
 -  [\![ u]\!]  &( C- { \overline u} -\dfrac{1}{\tau_2 C}    )=0   \\[5pt]
@@ -277,23 +277,23 @@ From this system we can  deduce the existence of two families of solutions. To s
 \end{equation}
 with $\overline{(\cdot)}$ denoting the arithmetic average between the right and left states.
 
-The first two  relations provide two different compatibility conditions. 
+The first two  relations provide two different compatibility conditions.
 One of these only allows for  discontinuities of $v$, and  it requires  the shock speed to be given by the speed of the linearly degenerate Riemann invariant $\nu_0=v$:
 \begin{equation}
-  C = - \dfrac{1}{\tau_1}.  
+  C = - \dfrac{1}{\tau_1}.
 \end{equation}
  If this is the case,   from the first and last in \eqref{eq:RH}   we deduce $[\![ u]\!] =[\![ w]\!] =0 $. This is essentially a contact discontinuity  moving at speed $C=\lambda_0$.
- Being a linearly degenerated discontinuity, we expect the second in \eqref{eq:shock-conditions} to hold with an equal sign. This can be easily verified: 
+ Being a linearly degenerated discontinuity, we expect the second in \eqref{eq:shock-conditions} to hold with an equal sign. This can be easily verified:
 \begin{equation}
 -C [\![\eta ]\!]  +  [\![ Q ]\!] =  - (\tau_1 C + 1) {\overline  v }  [\![ v ]\!] = 0
 \end{equation}
 for any value of the initial data since $\tau_1 C + 1$ vanishes. \\
 
-The second family of discontinuities is genuinely nonlinear and associated to the compatibility condition 
+The second family of discontinuities is genuinely nonlinear and associated to the compatibility condition
 \begin{equation}
 C- { \overline u} -\dfrac{1}{\tau_2 C} =0 \Rightarrow   C^2 - { \overline u} C  -\dfrac{1}{\tau_2 } =0.
 \end{equation}
-The above quadratic equation has    roots given by 
+The above quadratic equation has    roots given by
 \begin{equation}
 C_{\pm} = \dfrac{\overline u}{2} \pm \dfrac{1}{2} \sqrt{{\overline u}^2 +\dfrac{4}{\tau_2} }
 \end{equation}

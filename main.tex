@@ -22,6 +22,15 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 
+% fonts
+\usepackage{ifluatex}
+\ifluatex
+  \usepackage[no-math]{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+\fi
+\usepackage{newpxtext,newpxmath}
+
 % bibliography
 \usepackage[%
   backend=bibtex,bibencoding=ascii,

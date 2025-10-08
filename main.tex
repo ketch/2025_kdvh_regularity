@@ -142,6 +142,8 @@ The system \eqref{vbh} is invariant under the following transformation, for any 
 
 
 \subsection{Regularity}
+
+\subsubsection{Checking the conditions in Theorem~5.5.3}
 Now we apply the approach outlined in Section \ref{sec:general}.  
 First note that $(u,v) = (0,0)$ is indeed an equilibrium with $P=0$;
 furthermore the entropy (given by \eqref{burgers-entropy} and entropy flux 
@@ -177,8 +179,10 @@ we find that for the matrix \eqref{eq:M},
     \frac{1}{2}\left(M + M^T\right) & = \begin{bmatrix} \tau^{-1} k & 0 \\ 0 & \mu(\tau-k) \end{bmatrix},
 \end{align}
 so by taking $0 < k < \tau$, we have that $M$ is positive definite.  Thus all the assumptions
-of the theorem are fulfilled.
+of the theorem are fulfilled, so for small enough initial data $u, v$ we know there exists
+a strong solution for all time.
 
+\subsubsection{Applying the scaling symmetry}
 
 \section{Dissipative p-system}
 

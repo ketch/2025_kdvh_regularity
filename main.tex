@@ -190,6 +190,64 @@ a strong solution for all time.
 
 \subsection{Regularity}
 
+
+\section{Some examples not verifying the regularity conditions}
+
+\subsection{Hyperbolized forms of the KdV equation with viscousity}
+
+\begin{align}
+    u_t + u u_x + u_{xxx} = \mu u_{xx}
+\end{align}
+We study here different hyperbolic approximations of this equation. 
+A first  hyperbolic approximation reads
+\begin{subequations} \label{vbh}
+\begin{align}
+    u_t + u u_x  + w_x -\mu v_x & = 0 \\
+    \tau v_t - v_x & = -w\\
+        \tau w_t +  u_x & = v
+%            \tau z_t - u_x & = -z 
+\end{align}
+\end{subequations}
+This system is hyperbolic with eigenvalues $(\lambda_1, \lambda_2, \lambda_3 = (u/2 - \sqrt{u^2+4/\tau}/2, 1/\tau, u/2+ \sqrt{u^2+4/\tau}/2)$
+The entropy for this system is $\eta(U) = u^2/2 + \tau (v^2+w^2)/$, so we have 
+$$
+\eta'(U)= [u\;, \tau v\;, \tau w]^t\;,\quad 
+\eta''(U) =  \text{diag}(1,\tau,\tau) >0.
+$$
+However, we see that 
+$$
+\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [0;, w\;, -v]^t =0 
+$$
+which  violates  the hypotheses of the Theorem.
+
+
+\begin{subequations} \label{vbh0}
+\begin{align}
+    u_t + u u_x  + w_x -\mu z_x & = 0 \\
+    \tau v_t - v_x & = -w\\
+        \tau w_t +  u_x & = v\\
+            \tau z_t - u_x & = -z 
+\end{align}
+\end{subequations}
+For this system we have the entropy
+\begin{align}
+    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
+\end{align}
+with
+\begin{align*}
+    \eta_t & = u u_t + \mu \tau v v_t \\
+    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
+    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
+\end{align*}
+so
+\begin{align}
+\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
+\end{align}
+
+
+
+\subsection{Cahn-Hilliard equations}
+
 \section{KdVH}
 
 The KdVH system is

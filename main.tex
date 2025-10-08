@@ -55,45 +55,7 @@
 
 \maketitle
 
-\section{Viscous Burgers equation}
-\begin{align}
-    u_t + u u_x & = \mu u_{xx}
-\end{align}
-Hyperbolic approximation:
-\begin{align} \label{vbh}
-    u_t - \mu v_x + u u_x & = 0 \\
-    \tau v_t - u_x & = -v.
-\end{align}
-For this system we have the entropy
-\begin{align}
-    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
-\end{align}
-with
-\begin{align}
-    \eta_t & = u u_t + \mu \tau v v_t \\
-    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
-    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
-\end{align}
-so
-\begin{align}
-\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
-\end{align}
-
-
-\subsection{Scaling symmetry}
-The system \eqref{vbh} is invariant under the following transformation, for any $\epsilon>0$:
-\begin{subequations}
-\label{vbh-scaling}
-\begin{align}
-    \tau & \to \epsilon^2 \tau \\
-    x & \to \epsilon x & t & \to \epsilon^2 t \\
-    u & \to \epsilon^{-1} u & v & \to \epsilon^{-2} v.
-\end{align}
-\end{subequations}
-
-
-\subsection{Regularity}
-
+\section{General methodology} \label{sec:general}
 We use the approach outlined in \cite[Section~5.5]{dafermos2016hyperbolic} to prove regularity of solutions.
 Thus, we consider a hyperbolic balance law with source term of the form
 \begin{equation}
@@ -124,13 +86,73 @@ If these conditions are satisfied,
 gives global existence of a classical solution for initial data
 such that $\|U_0\|_{H^\ell}$, $\ell \ge 2$, is sufficiently small.
 
-Next, we will verify these conditions for the viscous Burgers system \eqref{vbh}.
-Please note that the condition \eqref{eq:dissipative_semidefinite}
-of a dissipative semidefinite source is very strong. Indeed, it is
-not satisfied for any of the hyperbolizations for higher-order PDEs
-such as KdV-Burgers \cite[Section~3.1.2]{giesselmann2025convergence}
+\todo{Add discussion about scaling symmetry here.}
+
+In Section \ref{sec:viscous-burgers} we 
+verify these conditions for the viscous Burgers system \eqref{vbh}.
+Next we consider the dissipative p-system.
+Unfortunately, for higher-order hyperbolized systems, the condition
+\eqref{eq:dissipative_semidefinite} of a dissipative semidefinite source is
+not satisfied.  For dispersive systems, there is zero dissipation, while
+for dissipative hyperbolized systems, only one variable is directly
+dissipated.  The condition \eqref{eq:dissipative_semidefinite} essentially
+requires that all variables be directly dissipated.
+very strong. Thus it is
+not satisfied for KdV-Burgers \cite[Section~3.1.2]{giesselmann2025convergence}
 or even the Cahn-Hilliard hyperbolization of Dhaouadi et al.
 
+
+\section{Viscous Burgers equation} \label{sec:viscous-burgers}
+\begin{align}
+    u_t + u u_x & = \mu u_{xx}
+\end{align}
+Hyperbolic approximation:
+\begin{subequations} \label{vbh}
+\begin{align}
+    u_t - \mu v_x + u u_x & = 0 \\
+    \tau v_t - u_x & = -v.
+\end{align}
+\end{subequations}
+For this system we have the entropy
+\begin{align}
+    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
+\end{align}
+with
+\begin{align*}
+    \eta_t & = u u_t + \mu \tau v v_t \\
+    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
+    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
+\end{align*}
+so
+\begin{align}
+\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
+\end{align}
+
+
+\subsection{Scaling symmetry}
+The system \eqref{vbh} is invariant under the following transformation, for any $\epsilon>0$:
+\begin{subequations}
+\label{vbh-scaling}
+\begin{align}
+    \tau & \to \epsilon^2 \tau \\
+    x & \to \epsilon x & t & \to \epsilon^2 t \\
+    u & \to \epsilon^{-1} u & v & \to \epsilon^{-2} v.
+\end{align}
+\end{subequations}
+
+
+\subsection{Regularity}
+Now we apply the approach outlined in Section \ref{sec:general}.  We have
+\begin{align}
+    \eta'' & = \begin{bmatrix}
+        1 & 0 \\ 0 & \mu \tau
+    \end{bmatrix}
+\end{align}
+which is positive definite since $\mu \tau >0$.
+Next we have
+\begin{align}
+blah
+\end{align}
 
 
 \section{Dissipative p-system}

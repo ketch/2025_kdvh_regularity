@@ -56,9 +56,40 @@
 \maketitle
 
 \section{Viscous Burgers equation}
+\begin{align}
+    u_t + u u_x & = \mu u_{xx}
+\end{align}
+Hyperbolic approximation:
+\begin{align} \label{vbh}
+    u_t - \mu v_x + u u_x & = 0 \\
+    \tau v_t - u_x & = -v.
+\end{align}
+For this system we have the entropy
+\begin{align}
+    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
+\end{align}
+with
+\begin{align}
+    \eta_t & = u u_t + \mu \tau v v_t \\
+    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
+    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
+\end{align}
+so
+\begin{align}
+\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
+\end{align}
+
 
 \subsection{Scaling symmetry}
-
+The system \eqref{vbh} is invariant under the following transformation, for any $\epsilon>0$:
+\begin{subequations}
+\label{vbh-scaling}
+\begin{align}
+    \tau & \to \epsilon^2 \tau \\
+    x & \to \epsilon x & t & \to \epsilon^2 t \\
+    u & \to \epsilon^{-1} u & v & \to \epsilon^{-2} v.
+\end{align}
+\end{subequations}
 \subsection{Regularity}
 
 \section{Dissipative p-system}

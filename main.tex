@@ -49,11 +49,25 @@
 \newcommand{\todo}[1]{{\Large{\color{red}{#1}}}}
 
 
-\title{Notes on analysis of the KdVH equation}
+\title{Notes on analysis of some hyperbolized equations}
 
 \begin{document}
 
 \maketitle
+
+\section{Viscous Burgers equation}
+
+\subsection{Scaling symmetry}
+
+\subsection{Regularity}
+
+\section{Dissipative p-system}
+
+\subsection{Scaling symmetry}
+
+\subsection{Regularity}
+
+\section{KdVH}
 
 The KdVH system is
 \begin{subequations} \label{kdvh}
@@ -66,7 +80,7 @@ The KdVH system is
 When it is necessary to specify the values of $\tau_1, \tau_2$ we will
 refer to KdVH$(\tau_1,\tau_2)$.
 
-\section{Scaling symmetry}
+\subsection{Scaling symmetry}
 The system \eqref{kdvh} is invariant under the following
 transformation, for any $\epsilon>0$:
 \begin{subequations}
@@ -102,7 +116,7 @@ Then we have
 Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value of
 $\epsilon$, the initial data \eqref{scaled-ic} is well-prepared for any value of $\epsilon$.
 
-\section{Asymptotic expansion}
+\subsection{Asymptotic expansion}
 We assume there exist power series for $u, v, w$ in terms of $\tau$:
 \begin{align}
     u & = u^0 + \tau u^1 + \tau^2 u^2 + \cdots
@@ -130,7 +144,7 @@ It would be straightforward to obtain additional terms in this equation if we th
 be useful.
 The expansion including only the $O(\tau)$ term was given in \cite[eq.~(14)]{besse2022perfectly}.
 
-\section{Characteristic form}
+\subsection{Characteristic form}
 For the homogeneous hyperbolic part of KdVH, the eigenvalues of the flux Jacobian are
 \begin{align}
     \lambda_0 & = -1/\tau_1 \\
@@ -156,7 +170,10 @@ in order to better understand this system.
 
 
 
-\section{Regularity results}
+\subsection{Regularity results}
+{\bf Note: the analysis in this section is based on a theorem in the 2nd
+edition of Dafermos' book, whose proof seems to be incorrect.  Thus it
+seems that these results are not valid.}
 
 Following Dafermos \cite[Section~5.2]{dafermos2010hyperbolic}, we write the KdVH system \eqref{kdvh} as
 \begin{equation}\label{eq:kdvh_con}
@@ -257,7 +274,7 @@ Indeed, for given initial data, there are critical thresholds for $\tau_1, \tau_
 Using the scaling symmetry \eqref{eq:scaling} the other way round, we notice that KdVH may have discontinuous solutions for any $\tau_1, \tau_2 > 0$ as long as the initial data are sufficiently big (in the sense of $\| U_0 \|_{H^\ell}$ not being small).
 
 
-\section{Discontinuous solutions}
+\subsection{Discontinuous solutions}
 
 
 The conservative form \eqref{eq:kdvh_con} of KDVH system, as well as the entropy balance \eqref{eq:kdvh_entropyeq} can be used to characterize
@@ -326,7 +343,7 @@ admissibility conditions for the initial data. We thus write
 \todo{TODO: Can we reverse-engineer relative energy convergence results to show well-posedness of KdV using this?}
 
 
-\section{Some numerical results}
+\subsection{Some numerical results}
 
 The results currently included here are computed using a 1st-order HLL solver.  It should be
 kept in mind that this is quite dissipative so longer-time solutions will not be accurate.

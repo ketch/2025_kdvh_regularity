@@ -75,8 +75,8 @@ We need to check the following properties to obtain global existence of a classi
             \eta'(U) \cdot P(U) \ge a |P(U)|^2.
           \end{equation}
     \item There is a skew-symmetric matrix $K$ such that
-          \begin{equation}
-            K G'(0) + \eta''(0) P'(0)
+          \begin{equation} \label{eq:M}
+            M = K G'(0) + \eta''(0) P'(0)
           \end{equation}
           is positive definite (which is implied by the Kawashima
           condition \cite[Section~5.2]{dafermos2016hyperbolic}).
@@ -114,7 +114,7 @@ Hyperbolic approximation:
 \end{align}
 \end{subequations}
 For this system we have the entropy
-\begin{align}
+\begin{align} \label{burgers-entropy}
     \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
 \end{align}
 with
@@ -142,7 +142,11 @@ The system \eqref{vbh} is invariant under the following transformation, for any 
 
 
 \subsection{Regularity}
-Now we apply the approach outlined in Section \ref{sec:general}.  We have
+Now we apply the approach outlined in Section \ref{sec:general}.  
+First note that $(u,v) = (0,0)$ is indeed an equilibrium with $P=0$;
+furthermore the entropy (given by \eqref{burgers-entropy} and entropy flux 
+(given by $2\mu uv - u^3/3$) and their first derivatives vanish for these values.
+We have
 \begin{align}
     \eta'' & = \begin{bmatrix}
         1 & 0 \\ 0 & \mu \tau
@@ -151,8 +155,29 @@ Now we apply the approach outlined in Section \ref{sec:general}.  We have
 which is positive definite since $\mu \tau >0$.
 Next we have
 \begin{align}
-blah
+    \eta' \cdot P & = [u, \mu \tau v] \cdot  \begin{bmatrix} 0 \\ v \end{bmatrix} = \mu \tau v^2 \\
+    |P|^2 & = v^2,
 \end{align}
+so \eqref{eq:dissipative_semidefinite} is satisfied with $a = \mu \tau$.
+Then we have
+\begin{align}
+    G & = \begin{bmatrix} \frac{1}{2} u^2 -\mu v \\ -\tau^{-1} u \end{bmatrix} \\
+   G' & = \begin{bmatrix} u & -\mu \\ -\tau^{-1} &  0 \end{bmatrix} \\
+   G'(0) & = \begin{bmatrix} 0 & -\mu \\ -\tau^{-1} &  0 \end{bmatrix} \\
+   \eta''(0) P'(0) & = \begin{bmatrix} 1 & 0 \\ 0 & \mu \tau \end{bmatrix}
+    \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} = 
+    \begin{bmatrix} 0 & 0 \\ 0 & \mu \tau \end{bmatrix}.
+\end{align}
+Taking
+\begin{align*}
+    K = \begin{bmatrix} 0 & -k \\ k & 0 \end{bmatrix},
+\end{align*}
+we find that for the matrix \eqref{eq:M},
+\begin{align}
+    \frac{1}{2}\left(M + M^T\right) & = \begin{bmatrix} \tau^{-1} k & 0 \\ 0 & \mu(\tau-k) \end{bmatrix},
+\end{align}
+so by taking $0 < k < \tau$, we have that $M$ is positive definite.  Thus all the assumptions
+of the theorem are fulfilled.
 
 
 \section{Dissipative p-system}

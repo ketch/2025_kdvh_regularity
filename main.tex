@@ -90,7 +90,48 @@ The system \eqref{vbh} is invariant under the following transformation, for any 
     u & \to \epsilon^{-1} u & v & \to \epsilon^{-2} v.
 \end{align}
 \end{subequations}
+
+
 \subsection{Regularity}
+
+We use the approach outlined in \cite[Section~5.5]{dafermos2016hyperbolic} to prove regularity of solutions.
+Thus, we consider a hyperbolic balance law with source term of the form
+\begin{equation}
+\begin{aligned}
+    \partial_t U + \partial_x G(U) + P(U) &= 0, && x \in \mathbb{R}, t > 0, \\
+    U(x, 0) & = U_0(x), && x \in \mathbb{R}.
+\end{aligned}
+\end{equation}
+Assume that $U = 0$ is an equilibrium with $P(0) = 0$, and that there is a convex entropy $\eta$ with associated entropy flux $Q$ satisfying $\eta(0) = 0$, $Q(0) = 0$, $\eta'(0) = 0$, and $Q'(0) = 0$.
+We need to check the following properties to obtain global existence of a classical solution for small initial data from \cite[Theorem~5.5.3]{dafermos2016hyperbolic}:
+\begin{itemize}
+    \item The Hessian $\eta''(U)$ is positive definite ($\eta''(U) = A(U)$ in the notation of \cite[Section~5.5]{dafermos2016hyperbolic}).
+    \item The source is dissipative semidefinite, i.e.,
+          \begin{equation}
+          \label{eq:dissipative_semidefinite}
+            \exists a > 0\colon \quad
+            \eta'(U) \cdot P(U) \ge a |P(U)|^2.
+          \end{equation}
+    \item There is a skew-symmetric matrix $K$ such that
+          \begin{equation}
+            K G'(0) + \eta''(0) P'(0)
+          \end{equation}
+          is positive definite (which is implied by the Kawashima
+          condition \cite[Section~5.2]{dafermos2016hyperbolic}).
+\end{itemize}
+If these conditions are satisfied,
+\cite[Theorem~5.5.3]{dafermos2016hyperbolic}
+gives global existence of a classical solution for initial data
+such that $\|U_0\|_{H^\ell}$, $\ell \ge 2$, is sufficiently small.
+
+Next, we will verify these conditions for the viscous Burgers system \eqref{vbh}.
+Please note that the condition \eqref{eq:dissipative_semidefinite}
+of a dissipative semidefinite source is very strong. Indeed, it is
+not satisfied for any of the hyperbolizations for higher-order PDEs
+such as KdV-Burgers \cite[Section~3.1.2]{giesselmann2025convergence}
+or even the Cahn-Hilliard hyperbolization of Dhaouadi et al.
+
+
 
 \section{Dissipative p-system}
 

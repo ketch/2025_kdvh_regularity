@@ -238,7 +238,12 @@ By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar 
         v^1(x,t=0) & = \epsilon^2 v_0(\epsilon x, \epsilon^2 t).
     \end{align*}
     Thus $u^1 \propto \epsilon$, $v^1\propto \epsilon^2$, $\partial_x u^1 \propto \epsilon^2$,
-    $\partial_x v^1 \propto \epsilon^3$.  By taking $\epsilon$ small enough, 
+    $\partial_x v^1 \propto \epsilon^3$, and
+    \begin{align*}
+        \|u^1\|_2 & \sim \epsilon^{1/2} & \|v_1\|_2 & \sim \epsilon^{3/2} \\
+        \|\nabla u^1\|_2 & \sim \epsilon^{3/2} & \|\nabla v_1\|_2 & \sim \epsilon^{5/2}.
+    \end{align*}
+    By taking $\epsilon$ small enough, 
     we can make $\|U^1_0\|_{H^\ell}$ small enough to apply Theorem \ref{thm:burgers_small_data}.
 \end{proof}
 

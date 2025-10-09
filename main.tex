@@ -112,6 +112,7 @@ Hyperbolic approximation:
     u_t - \mu v_x + u u_x & = 0 \\
     \tau v_t - u_x & = -v.
 \end{align}
+For a given value of $\tau$, we refer to \eqref{vbh} as BH($\tau$).
 \end{subequations}
 For this system we have the entropy
 \begin{align} \label{burgers-entropy}
@@ -139,6 +140,27 @@ The system \eqref{vbh} is invariant under the following transformation, for any 
     u & \to \epsilon^{-1} u & v & \to \epsilon^{-2} v.
 \end{align}
 \end{subequations}
+
+\begin{proposition}\label{prop:vbh-scaling}
+Consider the Cauchy problem for \eqref{vbh} and let $\epsilon>0$.
+Let $q^\epsilon=[u^\epsilon,v^\epsilon]^T$ denote the
+solution of BH$(\epsilon^2)$ with initial data
+\begin{subequations} \label{bh-scaled-ic}
+\begin{align}
+    u^\epsilon(x,t=0) & = \epsilon^{-1} u_0(x/\epsilon) \\
+    v^\epsilon(x,t=0) & = \epsilon^{-2} v_0(x/\epsilon)
+\end{align}
+\end{subequations}
+Then we have
+\begin{subequations} \label{bh-scaled-ic-2}
+\begin{align}
+    u^{\epsilon}(x,t) & = \epsilon^{-1} u^1(x/\epsilon, t/\epsilon^2) \\
+    v^{\epsilon}(x,t) & = \epsilon^{-2} v^1(x/\epsilon, t/\epsilon^2)
+\end{align}
+\end{subequations}
+\end{proposition}
+Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value of
+$\epsilon$, the initial data \eqref{scaled-ic} is well-prepared for any value of $\epsilon$.
 
 
 \subsection{Regularity}
@@ -182,7 +204,44 @@ so by taking $0 < k < \tau$, we have that $M$ is positive definite.  Thus all th
 of the theorem are fulfilled, so for small enough initial data $u, v$ we know there exists
 a strong solution for all time.
 
+\begin{theorem}
+\label{thm:burgers_small_data}
+    Let
+    $\tau > 0$ and $\ell > 1$.
+    Let $U_0 \in L^2(\mathbb{R})$,
+    $U_0 \in H^\ell$, and $\|U_0\|_{H^\ell}$ be sufficiently small.
+    Then, there is a unique global classical solution $U$ of the Cauchy problem for the BH system \eqref{vbh}.
+\end{theorem}
+In particular, setting $\tau=1$, Theorem \ref{thm:burgers_small_data} implies that for small
+enough initial data there is a unique classical solution solution of BH(1).
+
+
 \subsubsection{Applying the scaling symmetry}
+By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar result for large initial data, but small $\tau$.
+\begin{theorem}
+\label{thm:bh_small_tau}
+    Let
+    $U_0 \in L^2(\mathbb{R})$ and
+    $U_0 \in H^2$.
+    Then, there exists $\tau > 0$ sufficiently small such that
+    there is a unique global classical solution $U$ of the Cauchy problem for the BH($\tau$) system \eqref{vbh}
+    with initial data $U_0$.
+\end{theorem}
+\begin{proof}
+%    In order to apply Theorem \ref{thm:small_data} we should fix $\tau_1, \tau_2$; for concreteness
+%    let us take $\tau_1=\tau_2=1$.
+    Let $U^\epsilon(x,t)$ denote the solution of
+    BH$(\epsilon^2)$ with the fixed initial data $u_0(x),v_0(x)$.  From \eqref{bh-scaled-ic-2}
+    we have that this is equivalent to the solution of BH(1) with initial data
+    \begin{align*}
+        u^1(x,t=0) & = \epsilon u_0(\epsilon x, \epsilon^2 t) \\
+        v^1(x,t=0) & = \epsilon^2 v_0(\epsilon x, \epsilon^2 t).
+    \end{align*}
+    Thus $u^1 \propto \epsilon$, $v^1\propto \epsilon^2$, $\partial_x u^1 \propto \epsilon^2$,
+    $\partial_x v^1 \propto \epsilon^3$.  By taking $\epsilon$ small enough, 
+    we can make $\|U^1_0\|_{H^\ell}$ small enough to apply Theorem \ref{thm:burgers_small_data}.
+\end{proof}
+
 
 \section{Dissipative p-system}
 

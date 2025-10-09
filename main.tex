@@ -88,7 +88,7 @@ such that $\|U_0\|_{H^\ell}$, $\ell \ge 2$, is sufficiently small.
 
 \todo{Add discussion about scaling symmetry here.}
 
-In Section \ref{sec:viscous-burgers} we 
+In Section \ref{sec:viscous-burgers} we
 verify these conditions for the viscous Burgers system \eqref{vbh}.
 Next we consider the dissipative p-system.
 Unfortunately, for higher-order hyperbolized systems, the condition
@@ -166,9 +166,9 @@ $\epsilon$, the initial data \eqref{scaled-ic} is well-prepared for any value of
 \subsection{Regularity}
 
 \subsubsection{Checking the conditions in Theorem~5.5.3}
-Now we apply the approach outlined in Section \ref{sec:general}.  
+Now we apply the approach outlined in Section \ref{sec:general}.
 First note that $(u,v) = (0,0)$ is indeed an equilibrium with $P=0$;
-furthermore the entropy (given by \eqref{burgers-entropy} and entropy flux 
+furthermore the entropy (given by \eqref{burgers-entropy} and entropy flux
 (given by $2\mu uv - u^3/3$) and their first derivatives vanish for these values.
 We have
 \begin{align}
@@ -189,7 +189,7 @@ Then we have
    G' & = \begin{bmatrix} u & -\mu \\ -\tau^{-1} &  0 \end{bmatrix} \\
    G'(0) & = \begin{bmatrix} 0 & -\mu \\ -\tau^{-1} &  0 \end{bmatrix} \\
    \eta''(0) P'(0) & = \begin{bmatrix} 1 & 0 \\ 0 & \mu \tau \end{bmatrix}
-    \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} = 
+    \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} =
     \begin{bmatrix} 0 & 0 \\ 0 & \mu \tau \end{bmatrix}.
 \end{align}
 Taking
@@ -248,6 +248,14 @@ By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar 
 \end{proof}
 
 
+
+\todo{TODO: Another kind of regularity result?}
+Theorem~5.1.1 in \cite{dafermos2016hyperbolic} gives local existence of a classical solution for a hyperbolic system with source term like the ones we consider.
+Can we use the scaling symmetry to make initial data small for $\tau = 1$, extend the lifetime of a smooth solution, and then scale back to small $\tau$ with still longer lifetime of a smooth solution than for bigger $\tau$?
+Can we prove something like: for fixed initial data, the lifetime of a smooth solution goes to infinity as $\tau \to 0$?
+This result would be much weaker than ``for fixed initial data, there is a $\tau_0 > -$ such that for all $0 < \tau <  \tau_0$ there is a global smooth solution'' but still interesting.
+
+
 \section{Dissipative p-system}
 
 \subsection{Scaling symmetry}
@@ -262,20 +270,20 @@ By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar 
 \begin{align}
     u_t + u u_x + u_{xxx} = \mu u_{xx}
 \end{align}
-We study here different hyperbolic approximations of this equation. 
-A first  hyperbolic approximation taken from \cite{giesselmann2025convergence} reads  
+We study here different hyperbolic approximations of this equation.
+A first  hyperbolic approximation taken from \cite{giesselmann2025convergence} reads
 \begin{subequations} \label{vkdvh1}
 \begin{align}
     u_t + u u_x  + w_x & = 0 \\
     \tau v_t   - v_x  & = -w -\mu v\\
         \tau w_t +  u_x & = v
-%            \tau z_t - u_x & = -z 
+%            \tau z_t - u_x & = -z
 \end{align}
 \end{subequations}
 This system has eigenvalues $(\lambda_1,\; \lambda_2,\;\lambda_3)=(u/2 - \sqrt{u^2+4/\tau}/2, -1/\tau, u/2+ \sqrt{u^2+4/\tau}/2)$.
-The entropy is easily shown to be $\eta(U) = u^2/2 + \tau (v^2+w^2)/$, so we have 
+The entropy is easily shown to be $\eta(U) = u^2/2 + \tau (v^2+w^2)/$, so we have
 $$
-\eta'(U)= [u\;, \tau v\;, \tau w]^t\;,\quad 
+\eta'(U)= [u\;, \tau v\;, \tau w]^t\;,\quad
 \eta''(U) =  \text{diag}(1,\tau,\tau) >0.
 $$
 The entropy flux is obtained from
@@ -284,12 +292,12 @@ G_x =u (u u_x  + w_x) - v v_x + wu_x = ( u^3/2 - v^2/2  + uw )_x\Rightarrow G = 
 $$
 The source entropy production is for this system
 $$
-\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [0\;, w +\mu v\;, -v]^t = \tau \mu v^2  
+\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [0\;, w +\mu v\;, -v]^t = \tau \mu v^2
 $$
 We now need to check that this term can be used to bound from above the the squared norm of the source term?
-So we need to find some constant $a$ such that  
+So we need to find some constant $a$ such that
 $$
-  a \tau \mu   v^2 \stackrel{?}{\ge} \|P(U)\|^2 = v^2 + (w +\mu v)^2 
+  a \tau \mu   v^2 \stackrel{?}{\ge} \|P(U)\|^2 = v^2 + (w +\mu v)^2
 $$
 which is in general not true since the $w$ terms on the right hand side cannot be controlled.\\
 
@@ -301,17 +309,17 @@ As an alternative let us now consider the approximation
     u_t + u u_x  + w_x -\mu w & = 0 \\
     \tau v_t - v_x & = -w\\
         \tau w_t +  u_x & = v
-%            \tau z_t - u_x & = -z 
+%            \tau z_t - u_x & = -z
 \end{align}
-\end{subequations} 
-This system is hyperbolic with  same eigenvalues  and same entropy and entropy flux as the previous. 
+\end{subequations}
+This system is hyperbolic with  same eigenvalues  and same entropy and entropy flux as the previous.
 We can see that  the source entropy production is
 $$
 \eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [-\mu w\;, w\;, -v]^t =- \mu u w
 $$
 which is unfortunately unsigned and again does not allow to apply Daferrmos' criterion.\\
 
- 
+
 
 Finally we  study   the augmented system
 \begin{subequations} \label{vkdvh3}
@@ -319,7 +327,7 @@ Finally we  study   the augmented system
     u_t +  u u_x  + w_x -\mu z_x & = 0 \\
     \tau v_t - v_x & = -w\\
         \tau w_t  + u_x  & = v
-            \tau z_t - u_x & = -z 
+            \tau z_t - u_x & = -z
 \end{align}
 \end{subequations}
 We have now the eigenvalues $(\lambda_1,\;\lambda_2,\;\lambda_3,\;\lambda_4)=(u/2 - \sqrt{u^2+(1+\mu)2/\tau}/2, -1/\tau, 0 , u/2 + \sqrt{u^2+(1+\mu)2/\tau}/2)$.
@@ -327,9 +335,9 @@ The entropy is now $\eta(U) =u^2/2 + \tau v^2/2 + \tau w^2/2 +\tau  \mu  z^2/2$ 
 $$
 G_x = u( u u_x  + w_x -\mu z_x) - vv_x +wu_x -\mu z u_x  \Rightarrow  G =u^3/3  -v^2/2 + uw -\mu uz.
 $$
-We also have 
+We also have
 $$
-\eta'(U)= [u\;, \tau v\;, \tau w\;, \tau\mu z]^t\;,\quad 
+\eta'(U)= [u\;, \tau v\;, \tau w\;, \tau\mu z]^t\;,\quad
 \eta''(U) =  \text{diag}(1,\tau,\tau,\tau \mu) >0.
 $$
 Let us now check the  sign  condition
@@ -349,7 +357,7 @@ This cannot be true in general as we cannot control the $w^2 + z^2$ term.
 %    u_t + u u_x  + w_x -\mu z_x & = 0 \\
 %    \tau v_t - v_x & = -w\\
 %        \tau w_t +  u_x & = v\\
-%            \tau z_t - u_x & = -z 
+%            \tau z_t - u_x & = -z
 %\end{align}
 %\end{subequations}
 %For this system we have the entropy
@@ -387,11 +395,11 @@ c_t  &  +\dfrac{1}{\tau} q_x =0\\
 q_t  &  + h_x +\alpha c_x- \alpha\varphi_x = - \dfrac{1}{\tau} q\\
 w_t  &  -  \gamma p_x =  -\alpha (\varphi-c)\\
 p_t  &  -   \dfrac{1}{\beta} w_x =0\\
-\varphi_t &  =   \dfrac{1}{\beta} w 
+\varphi_t &  =   \dfrac{1}{\beta} w
 \end{align}
 \end{subequations}
-The reference shows the asymptotic consistency of this model in the scaling 
-$$\tau = \gamma^2,\;, \alpha=\gamma^{-1} = \tau^{-1/2},\; \beta =\gamma^2 = \tau,$$ 
+The reference shows the asymptotic consistency of this model in the scaling
+$$\tau = \gamma^2,\;, \alpha=\gamma^{-1} = \tau^{-1/2},\; \beta =\gamma^2 = \tau,$$
 which would lead to  the  (correctly) scaled equations
 \begin{subequations} \label{hCaHi1}
 \begin{align}
@@ -399,7 +407,7 @@ c_t  &  +\dfrac{1}{\gamma^2} q_x =0\\
 q_t  &  + h_x +\dfrac{1}{\gamma} c_x- \dfrac{1}{\gamma}\varphi_x =  \dfrac{1}{\gamma^2} q\\
 w_t  &  -  \gamma p_x = - \dfrac{1}{\gamma} (\varphi-c)\\
 p_t  &  -   \dfrac{1}{\gamma^2} w_x =0\\
-\varphi_t &  =   \dfrac{1}{\gamma^2} w 
+\varphi_t &  =   \dfrac{1}{\gamma^2} w
 \end{align}
 \end{subequations}
 The hyperbolicity of the system is studied in \cite{dhaouadi25}, where the authors also show the existence of the entropy
@@ -408,7 +416,7 @@ $$
 $$
 with
 $$
-\eta'(U)= [h+ \dfrac{1}{\gamma } (c-\varphi),\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma^2 }w,\, \gamma p,\,    -\dfrac{1}{\gamma } (c-\varphi) ]^t\;,\quad 
+\eta'(U)= [h+ \dfrac{1}{\gamma } (c-\varphi),\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma^2 }w,\, \gamma p,\,    -\dfrac{1}{\gamma } (c-\varphi) ]^t\;,\quad
 \eta''(U) =   \left[\begin{array}{ccccc}
 h' +\dfrac{1}{\gamma} &0&0&0&-\dfrac{1}{\gamma} \\
 0 & \dfrac{1}{\gamma} &0&0&0\\
@@ -423,7 +431,7 @@ $$
 \begin{aligned}
 \eta'(U)^t\cdot P(U) = &[h+ \dfrac{1}{\gamma } (c-\varphi),\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma^2 }w,\, \gamma p,\,    -\dfrac{1}{\gamma } (c-\varphi) ]
 [0,\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma }(\varphi-c),\, 0,\,    -\dfrac{1}{\gamma^2 } w ]^t\\= &
- \dfrac{1}{\gamma^4 }q^2 
+ \dfrac{1}{\gamma^4 }q^2
 \end{aligned}
 $$
 which again cannot be used to control the norm $\|P(U)\|$, so does not verify all the conditions of Dafermos' Theorem.

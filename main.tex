@@ -89,12 +89,12 @@ such that $\|U_0\|_{H^\ell}$, $\ell \ge 2$, is sufficiently small.
 \todo{Add discussion about scaling symmetry here.}
 
 {\color{red} 
-\begin{remark}[Scaling, and zero] Could we write that 
+\begin{remark}[Scaling, and zero] Could we set
 $$
 U =    \bar U_0 +    \overbrace{ U - \bar U_0}^{\tilde U }
 $$
-with $\bar U_0$ some constant value depending on the initial data (e.g. the average) so that any scaling   apply properly to both
-$\bar U_0$ and $\tilde U$, and work with $\tilde U$ as main variable ?
+with $\bar U_0$ some constant value depending on the initial data (e.g. the average). In this case  any scaling should    apply  to both
+$\bar U_0$ and $\tilde U$. We can then use as main variable   $\tilde U$ and use the zero without any problem (??)
 \end{remark}
 }
 
@@ -268,7 +268,7 @@ By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar 
 
 
 
-\section{Dissipative p-system (p-system with damping) with a nonlinear flux}
+\section{A dissipative p-system   with damping and  nonlinear flux}
 
 We consider here the following genuinely non-linear generalization of the viscous Burgers' equation
 \begin{equation}\label{vbh-nl}
@@ -304,7 +304,12 @@ p'(u)&  0\\
 \end{array}
 \right]>0
 $$
-For a given value of $\tau$, we refer to \eqref{vbh-nl-p} as PH($\tau$).
+For a given value of $\tau$, we refer to \eqref{vbh-nl-p} as PH($\tau$). As before we can check that this system is dissipative since
+\begin{align}
+\partial_t \int_{-\infty}^\infty \eta dx & = -  \int_\infty^\infty v^2 dx \le 0.
+\end{align}
+
+
 
 \subsection{Regularity}
 
@@ -366,6 +371,106 @@ enough initial data there is a unique classical  solution of PH(1).
 
 \subsection{Scaling symmetry}
 
+Assume now that the flux and pressure verify a scaling law wrt $u$ of the type 
+$$
+f  \approx u^{k_f}\,,\quad p \approx u^{k_p}.
+$$
+We rescale all variables as 
+$$
+\begin{aligned}
+x'  = \epsilon^{n_x} x\\
+t'  = \epsilon^{n_t} t\\ 
+\tau'  = \epsilon^{n_\tau} \tau\\
+u'  = \epsilon^{n_u} u\\
+v'  = \epsilon^{n_v} v\\
+\end{aligned}
+$$
+and look for the power exponents which make the Cauchy problem  for \eqref{psys-nl1} invariant. To this end it is enough
+to compare all the terms of the same PDE  two by two. We obtain the following relations
+\begin{subequations}
+\begin{align}
+-n_t+n_u = -n_x +k_f n_u\\
+-n_t+n_u=-n_x+ n_v\\
+-n_x+k_f n_u = -n_x + n_v\\
+n_\tau - n_t + n_v = - n_x + k_p n_u\\
+n_\tau  - n_t + n_v = n_v\\
+-n_x+k_p n_u= n_v
+\end{align}
+\end{subequations}
+From relation (c) and  (e) we immediately deduce $n_v = k_f n_u$, and  $n_\tau=n_t$. We can use 
+  relation (d)  to obtain $n_u=  (k_p - k_f)^{-1}n_x$, and thus $n_t =  (k_p - 2k_f  + 1) (k_p - k_f)^{-1} n_x$ from (b).
+  
+Summarizing,     system  \eqref{psys-nl1}  is invariant under the following transformation, for any $\epsilon>0$:
+\begin{subequations}
+\label{psys-scaling}
+\begin{align}
+   x & \to \epsilon x & t & \to \epsilon^{(k_p - 2k_f  + 1) (k_p - k_f)^{-1} } t \\
+     &\tau  \to \epsilon^{\epsilon^{(k_p - 2k_f  + 1) (k_p - k_f)^{-1} }} \tau \\
+    u & \to \epsilon^{(k_p - k_f)^{-1}} u & v & \to \epsilon^{k_f(k_p - k_f)^{-1}} v.
+\end{align}
+\end{subequations}
+Note  that for $k_p=1$ and $k_f=2$ we find back the scaling invariance of  \eqref{vbh}.
+
+
+\begin{proposition}
+Consider   the Cauchy problem for \eqref{psys-nl1} and  let $\epsilon>0$.
+Assume the flux and pressure verify a scaling law   of the type 
+$$
+f  \approx u^{k_f}\,,\quad p \approx u^{k_p}.
+$$
+Let $q^\epsilon=[u^\epsilon,v^\epsilon]^T$ denote the
+solution   with initial data
+\begin{subequations} \label{psys-scaled-ic}
+\begin{align}
+    u^\epsilon(x,t=0) & = \epsilon^{(k_p - k_f)^{-1}} u_0(x/\epsilon) \\
+    v^\epsilon(x,t=0) & = \epsilon^{k_f(k_p - k_f)^{-1}} v_0(x/\epsilon)
+\end{align}
+\end{subequations}
+Then we have
+\begin{subequations} \label{psys-scaled-ic-2}
+\begin{align}
+    u^{\epsilon}(x,t) & = \epsilon^{(k_p - k_f)^{-1}} u^1(x/\epsilon, t/\epsilon^{(k_p - 2k_f  + 1) (k_p - k_f)^{-1} } ) \\
+    v^{\epsilon}(x,t) & =  \epsilon^{k_f(k_p - k_f)^{-1}} v^1(x/\epsilon, t/\epsilon^{(k_p - 2k_f  + 1) (k_p - k_f)^{-1} } )
+\end{align}
+\end{subequations}
+\end{proposition}
+Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value of
+$\epsilon$, the initial data \eqref{psys-scaled-ic} is well-prepared for any value of $\epsilon$.
+
+
+
+\subsubsection{Applying the scaling symmetry}
+As before, we want to use   the scaling symmetry \eqref{psys-scaling} to obtain a similar result  for large initial data, but small $\tau$.
+\begin{theorem}
+\label{thm:psys_small_tau}
+    Let
+    $U_0 \in L^2(\mathbb{R})$ and
+    $U_0 \in H^2$.
+    Then, there exists $\tau > 0$ sufficiently small such that
+    there is a unique global classical solution $U$ of the Cauchy problem for the BH($\tau$) system \eqref{psys-nl1}
+    with initial data $U_0$.
+\end{theorem}
+\begin{proof}
+The proof follows the same steps of the one of theorem \ref{thm:bh_small_tau}.
+%    In order to apply Theorem \ref{thm:small_data} we should fix $\tau_1, \tau_2$; for concreteness
+%    let us take $\tau_1=\tau_2=1$.
+%    Let $U^\epsilon(x,t)$ denote the solution of
+%    BH$(\epsilon^2)$ with the fixed initial data $u_0(x),v_0(x)$.  From \eqref{bh-scaled-ic-2}
+%    we have that this is equivalent to the solution of BH(1) with initial data
+%    \begin{align*}
+%        u^1(x,t=0) & = \epsilon u_0(\epsilon x, \epsilon^2 t) \\
+%        v^1(x,t=0) & = \epsilon^2 v_0(\epsilon x, \epsilon^2 t).
+%    \end{align*}
+%    Thus $u^1 \propto \epsilon$, $v^1\propto \epsilon^2$, $\partial_x u^1 \propto \epsilon^2$,
+%    $\partial_x v^1 \propto \epsilon^3$, and
+%    \begin{align*}
+%        \|u^1\|_2 & \sim \epsilon^{1/2} \|u_0\| & \|v_1\|_2 & \sim \epsilon^{3/2} \|v_0\| \\
+%        \|\nabla u^1\|_2 & \sim \epsilon^{3/2} \|u_0\| & \|\nabla v_1\|_2 & \sim \epsilon^{5/2}\|v_0\| .
+%    \end{align*}
+%    By taking $\epsilon$ small enough, 
+%    we can make $\|U^1_0\|_{H^\ell}$ small enough to apply Theorem \ref{thm:burgers_small_data}.
+\end{proof}
+%
 
 
 

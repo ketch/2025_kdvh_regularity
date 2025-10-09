@@ -193,57 +193,116 @@ a strong solution for all time.
 
 \section{Some examples not verifying the regularity conditions}
 
-\subsection{Hyperbolized forms of the KdV equation with viscousity}
+\subsection{Hyperbolized forms of the KdV equation with viscosity}
 
 \begin{align}
     u_t + u u_x + u_{xxx} = \mu u_{xx}
 \end{align}
 We study here different hyperbolic approximations of this equation. 
-A first  hyperbolic approximation reads
-\begin{subequations} \label{vbh}
+A first  hyperbolic approximation reads  
+\begin{subequations} \label{vkdvh1}
 \begin{align}
-    u_t + u u_x  + w_x -\mu v_x & = 0 \\
-    \tau v_t - v_x & = -w\\
+    u_t + u u_x  + w_x & = 0 \\
+    \tau v_t   - v_x  & = -w -\mu v\\
         \tau w_t +  u_x & = v
 %            \tau z_t - u_x & = -z 
 \end{align}
 \end{subequations}
-This system is hyperbolic with eigenvalues $(\lambda_1, \lambda_2, \lambda_3 = (u/2 - \sqrt{u^2+4/\tau}/2, 1/\tau, u/2+ \sqrt{u^2+4/\tau}/2)$
-The entropy for this system is $\eta(U) = u^2/2 + \tau (v^2+w^2)/$, so we have 
+This system has eigenvalues $(\lambda_1,\; \lambda_2,\;\lambda_3)=(u/2 - \sqrt{u^2+4/\tau}/2, -1/\tau, u/2+ \sqrt{u^2+4/\tau}/2)$.
+The entropy is easily shown to be $\eta(U) = u^2/2 + \tau (v^2+w^2)/$, so we have 
 $$
 \eta'(U)= [u\;, \tau v\;, \tau w]^t\;,\quad 
 \eta''(U) =  \text{diag}(1,\tau,\tau) >0.
 $$
-However, we see that 
+The entropy flux is obtained from
 $$
-\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [0;, w\;, -v]^t =0 
+G_x =u (u u_x  + w_x) - v v_x + wu_x = ( u^3/2 - v^2/2  + uw )_x\Rightarrow G = u^3/2 - v^2/2  + uw.
 $$
-which  violates  the hypotheses of the Theorem.
+The source entropy production is for this system
+$$
+\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [0\;, w +\mu v\;, -v]^t = \tau \mu v^2  
+$$
+We now need to check that this term can be used to bound from above the the squared norm of the source term?
+So we need to find some constant $a$ such that  
+$$
+  a \tau \mu   v^2 \stackrel{?}{\ge} \|P(U)\|^2 = v^2 + (w +\mu v)^2 
+$$
+which is in general not true since the $w$ terms on the right hand side cannot be controlled.\\
 
 
-\begin{subequations} \label{vbh0}
+
+As an alternative let us now consider the approximation
+\begin{subequations} \label{vkdvh2}
 \begin{align}
-    u_t + u u_x  + w_x -\mu z_x & = 0 \\
+    u_t + u u_x  + w_x -\mu w & = 0 \\
     \tau v_t - v_x & = -w\\
-        \tau w_t +  u_x & = v\\
+        \tau w_t +  u_x & = v
+%            \tau z_t - u_x & = -z 
+\end{align}
+\end{subequations} 
+This system is hyperbolic with  same eigenvalues  and same entropy and entropy flux as the previous. 
+We can see that  the source entropy production is
+$$
+\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w] [-\mu w\;, w\;, -v]^t =- \mu u w
+$$
+which is unfortunately unsigned and again does not allow to apply Daferrmos' criterion.\\
+
+ 
+
+Finally we  study   the augmented system
+\begin{subequations} \label{vkdvh3}
+\begin{align}
+    u_t +  u u_x  + w_x -\mu z_x & = 0 \\
+    \tau v_t - v_x & = -w\\
+        \tau w_t  + u_x  & = v
             \tau z_t - u_x & = -z 
 \end{align}
 \end{subequations}
-For this system we have the entropy
-\begin{align}
-    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
-\end{align}
-with
-\begin{align*}
-    \eta_t & = u u_t + \mu \tau v v_t \\
-    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
-    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
-\end{align*}
-so
-\begin{align}
-\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
-\end{align}
+We have now the eigenvalues $(\lambda_1,\;\lambda_2,\;\lambda_3,\;\lambda_4)=(u/2 - \sqrt{u^2+(1+\mu)2/\tau}/2, -1/\tau, 0 , u/2 + \sqrt{u^2+(1+\mu)2/\tau}/2)$.
+The entropy is now $\eta(U) =u^2/2 + \tau v^2/2 + \tau w^2/2 +\tau  \mu  z^2/2$ and the entropy flux is obtained from
+$$
+G_x = u( u u_x  + w_x -\mu z_x) - vv_x +wu_x -\mu z u_x  \Rightarrow  G =u^3/3  -v^2/2 + uw -\mu uz.
+$$
+We also have 
+$$
+\eta'(U)= [u\;, \tau v\;, \tau w\;, \tau\mu z]^t\;,\quad 
+\eta''(U) =  \text{diag}(1,\tau,\tau,\tau \mu) >0.
+$$
+Let us now check the  sign  condition
+$$
+\eta'(U)\cdot P(U) = [u\;, \tau v\;, \tau w\;, \tau\mu z] [ 0,\; w,\; -v,\; z ]^t = \tau \mu z^2 ,
+$$
+which has the correct sign. We need now to verify the upper bound  condition :
+$$
+  a \tau \mu   v^2 \stackrel{?}{\ge} \|P(U)\|^2 = w^2 + v^2 + z^2 .
+$$
+This cannot be true in general as we cannot control the $w^2 + z^2$ term.
 
+%
+%
+%\begin{subequations} \label{vbh0}
+%\begin{align}
+%    u_t + u u_x  + w_x -\mu z_x & = 0 \\
+%    \tau v_t - v_x & = -w\\
+%        \tau w_t +  u_x & = v\\
+%            \tau z_t - u_x & = -z 
+%\end{align}
+%\end{subequations}
+%For this system we have the entropy
+%\begin{align}
+%    \eta = \frac{1}{2} \left(u^2 + \mu \tau v^2\right)
+%\end{align}
+%with
+%\begin{align*}
+%    \eta_t & = u u_t + \mu \tau v v_t \\
+%    & = \mu u v_x - u^2 u_x + \mu v u_x -\mu v^2 \\
+%    & = \left( 2 \mu uv - \frac{1}{3}u^3\right)_x - \mu v^2,
+%\end{align*}
+%so
+%\begin{align}
+%\partial_t \int_{-\infty}^\infty \eta dx & = -\mu \int_\infty^\infty v^2 dx \le 0.
+%\end{align}
+%
 
 
 \subsection{Cahn-Hilliard equations}

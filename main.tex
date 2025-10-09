@@ -243,11 +243,48 @@ By using the scaling symmetry \eqref{vbh-scaling}, we can also obtain a similar 
 \end{proof}
 
 
-\section{Dissipative p-system}
+\section{Dissipative p-system (p-system with damping) with a nonlinear flux}
+
+We consider here the following genuinely non-linear generalization of the viscous Burgers' equation
+\begin{equation}\label{vbh-nl}
+u_t + f(u)_x =  (p'(u) u_x)_x\,,\quad p'(u) >0.
+\end{equation}
+Let 
+\begin{equation}\label{vbh-nl1}
+N(u) = \int p(u)  du\,,\quad
+F(u) = \int p(u)f'(u) du\,. 
+\end{equation}
+We consider now the relaxation approximation 
+\begin{equation}\label{psys-nl1}
+\begin{aligned}
+u_t + &  f(u)_x - v_x =0\\
+\tau v_t -& p(u)_x = -v
+\end{aligned}
+\end{equation}
+whose eigenvalues are now $(\lambda_1,\lambda_2)=(f'(u)/2 - \sqrt{f'(u)^2  + 4 p'(u)/\tau}/2,\,f'(u)/2 + \sqrt{f'(u)^2  + 4 p'(u)/\tau}/2)$.
+The system admits and entropy/entropy flux which is given by
+$$
+\eta(U) = N(u) +  \tau\dfrac{v^2}{2}\,,\quad
+G = F(u) - p(u)v
+$$
+for which we have 
+$$
+\eta'(U) =  [p(u),\,  \tau v]^t\,,\;\; \eta''(U) = \left[\begin{array}{cc}
+p'(u)&  0\\
+0 & \tau
+\end{array}
+\right]>0
+$$
+
+\subsection{Regularity}
 
 \subsection{Scaling symmetry}
 
-\subsection{Regularity}
+
+
+
+
+
 
 
 \section{Some examples not verifying the regularity conditions}
@@ -421,7 +458,7 @@ $$
  \dfrac{1}{\gamma^4 }q^2 
 \end{aligned}
 $$
-which again cannot be used to control the norm $\|P(U)\|$, so does not verify all the conditions of Dafermos' Theorem.
+which  cannot be used to control the full norm $\|P(U)\|^2 = q^2/\gamma^4 +(c-\varphi)^2/\gamma^2 +w^2/\gamma^4 $, so does not verify all the conditions of Dafermos' Theorem.
 
 
 

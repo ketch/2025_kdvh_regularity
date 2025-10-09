@@ -199,7 +199,7 @@ a strong solution for all time.
     u_t + u u_x + u_{xxx} = \mu u_{xx}
 \end{align}
 We study here different hyperbolic approximations of this equation. 
-A first  hyperbolic approximation reads  
+A first  hyperbolic approximation taken from \cite{giesselmann2025convergence} reads  
 \begin{subequations} \label{vkdvh1}
 \begin{align}
     u_t + u u_x  + w_x & = 0 \\
@@ -306,6 +306,65 @@ This cannot be true in general as we cannot control the $w^2 + z^2$ term.
 
 
 \subsection{Cahn-Hilliard equations}
+
+This section considers the Cahn-Hilliard equations given by
+
+\begin{subequations} \label{CaHi}
+\begin{align}
+c_t  & -  h_{xx} +\gamma c_{xxxx} =0\\
+h &=h(c) = \dfrac{dg(c)}{dc}
+\end{align}
+\end{subequations}
+with $g(c)$ the so-called  double-well potential, and $\sqrt{\gamma}$   the (given, small) characteristic length of  the phase transition layer.
+We consider the hyperbolic reformulation by \cite{dhaouadi25} which can be written as (using the appropriate scaling parameters)
+\begin{subequations} \label{hCaHi}
+\begin{align}
+c_t  &  +\dfrac{1}{\tau} q_x =0\\
+q_t  &  + h_x +\alpha c_x- \alpha\varphi_x = - \dfrac{1}{\tau} q\\
+w_t  &  -  \gamma p_x =  -\alpha (\varphi-c)\\
+p_t  &  -   \dfrac{1}{\beta} w_x =0\\
+\varphi_t &  =   \dfrac{1}{\beta} w 
+\end{align}
+\end{subequations}
+The reference shows the asymptotic consistency of this model in the scaling 
+$$\tau = \gamma^2,\;, \alpha=\gamma^{-1} = \tau^{-1/2},\; \beta =\gamma^2 = \tau,$$ 
+which would lead to  the  (correctly) scaled equations
+\begin{subequations} \label{hCaHi1}
+\begin{align}
+c_t  &  +\dfrac{1}{\gamma^2} q_x =0\\
+q_t  &  + h_x +\dfrac{1}{\gamma} c_x- \dfrac{1}{\gamma}\varphi_x =  \dfrac{1}{\gamma^2} q\\
+w_t  &  -  \gamma p_x = - \dfrac{1}{\gamma} (\varphi-c)\\
+p_t  &  -   \dfrac{1}{\gamma^2} w_x =0\\
+\varphi_t &  =   \dfrac{1}{\gamma^2} w 
+\end{align}
+\end{subequations}
+The hyperbolicity of the system is studied in \cite{dhaouadi25}, where the authors also show the existence of the entropy
+$$
+\eta(U) = g +\dfrac{\gamma}{2}p^2 + \dfrac{1}{2\gamma } (c-\varphi)^2  + \dfrac{1}{2\gamma^2}w^2 +  \dfrac{1}{2\gamma^2}q^2
+$$
+with
+$$
+\eta'(U)= [h+ \dfrac{1}{\gamma } (c-\varphi),\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma^2 }w,\, \gamma p,\,    -\dfrac{1}{\gamma } (c-\varphi) ]^t\;,\quad 
+\eta''(U) =   \left[\begin{array}{ccccc}
+h' +\dfrac{1}{\gamma} &0&0&0&-\dfrac{1}{\gamma} \\
+0 & \dfrac{1}{\gamma} &0&0&0\\
+0 & 0&\dfrac{1}{\gamma} &0&0\\
+0 & 0&0& \gamma &0\\
+-\dfrac{1}{\gamma} & 0&0& 0 &\dfrac{1}{\gamma} \\
+\end{array}
+\right]
+$$
+with the Hessian always positive if $h'\ge 0$. The Dafermos' condition on the entropy production  reads for this system
+$$
+\begin{aligned}
+\eta'(U)^t\cdot P(U) = &[h+ \dfrac{1}{\gamma } (c-\varphi),\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma^2 }w,\, \gamma p,\,    -\dfrac{1}{\gamma } (c-\varphi) ]
+[0,\,  \dfrac{1}{\gamma^2 }q,\,  \dfrac{1}{\gamma }(\varphi-c),\, 0,\,    -\dfrac{1}{\gamma^2 } w ]^t\\= &
+ \dfrac{1}{\gamma^4 }q^2 
+\end{aligned}
+$$
+which again cannot be used to control the norm $\|P(U)\|$, so does not verify all the conditions of Dafermos' Theorem.
+
+
 
 \section{KdVH}
 

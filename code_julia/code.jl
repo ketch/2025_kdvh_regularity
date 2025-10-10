@@ -8,6 +8,8 @@ using LinearAlgebra: UniformScaling, I, diag, diagind, mul!, ldiv!, lu, lu!, nor
 using SparseArrays: sparse, issparse, dropzeros!
 using Printf: @sprintf
 
+using QuadGK: QuadGK, quadgk
+
 using SummationByPartsOperators
 
 using LaTeXStrings
@@ -776,6 +778,96 @@ function test(; tspan = (0.0, 5.0),
     # filename = joinpath(FIGDIR, "korteweg_de_vries_convergence.pdf")
     # save(filename, fig)
     # @info "Results saved to $filename"
+
+    return fig
+end
+
+
+function test_shock_formation(; ε = 1.0,
+                                tspan = (0.0, 12.0 / ε),
+                                xlims = (-tspan[end] - 1 / ε, -tspan[end] + 1 / ε),
+                                N = 2^10,
+                                accuracy_order = 7,
+                                xmin = -5.0,
+                                xmax = 25.0,
+                                D1 = upwind_operators(periodic_derivative_operator;
+                                                      derivative_order = 1,
+                                                      accuracy_order,
+                                                      xmin, xmax, N),
+                                alg = ARS443(),
+                                dt = 0.05,
+                                kwargs...)
+    begin
+        equation = KdVH(1.0)
+        x = grid(D1)
+        function ϑ(x)
+            if abs(x) < 1
+                return exp(-1 / (1 - x^2))
+            else
+                return zero(x)
+            end
+        end
+        ϕ = map(x) do xi
+            if xi < -1
+                return zero(xi)
+            elseif xi > 4
+                return zero(xi)
+            else
+                res, _ = quadgk(-1.0, xi) do xx
+                    ϑ(xx) - ϑ(xx - 3)
+                end
+                return res
+            end
+        end
+        u0 = @. ε * ϕ
+        # u0 = @. ε * sin(x)
+        v0 = zero(u0)
+        w0 = @. -(u0^2 / 4 + u0 * sqrt(u0^2 + 4) / 4 + asinh(u0 / 2))
+        q0 = vcat(u0, v0, w0)
+        tmp = similar(u0)
+
+        parameters = (; equation, D1, tmp)
+
+        @time sol = solve_imex(rhs_stiff!, operator(rhs_stiff!, parameters),
+                               rhs_nonstiff!,
+                               q0, tspan, parameters, alg;
+                               dt = dt, kwargs...)
+
+        # get_u(sol.u[begin], equation), get_u(sol.u[end], equation)
+        sol
+    end
+
+    fig = Figure(size = (600, 450)) # default size is (600, 450)
+
+    ax_sol = Axis(fig[1, 1]; xlabel = L"x")
+
+    x = grid(D1)
+    u_ini = get_u(sol.u[begin], equation)
+    u_kdvh = get_u(sol.u[end], equation)
+    v_kdvh = get_qi(sol.u[end], equation, 1)
+    w_kdvh = get_qi(sol.u[end], equation, 2)
+    if !isnothing(xlims)
+        idx = @. xlims[begin] <= x <= xlims[end]
+        x = x[idx]
+        u_ini = u_ini[idx]
+
+        ux_kdvh = (D1.central * u_kdvh)[idx]
+        vx_kdvh = (D1.central * v_kdvh)[idx]
+        wx_kdvh = (D1.central * w_kdvh)[idx]
+
+        u_kdvh = u_kdvh[idx]
+        v_kdvh = v_kdvh[idx]
+        w_kdvh = w_kdvh[idx]
+    end
+    # lines!(ax_sol, x, u_ini; label = L"initial data $u_0$")
+    lines!(ax_sol, x, u_kdvh; label = L"u")
+    # lines!(ax_sol, x, v_kdvh; label = L"v")
+    lines!(ax_sol, x, w_kdvh; label = L"w")
+    # lines!(ax_sol, x, ux_kdvh; label = L"u_x")
+    # lines!(ax_sol, x, vx_kdvh; label = L"v_x")
+    # lines!(ax_sol, x, wx_kdvh; label = L"w_x")
+    axislegend(ax_sol; position = :lt, framevisible = false)
+
 
     return fig
 end

@@ -438,7 +438,7 @@ Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value
 $\epsilon$, the initial data \eqref{psys-scaled-ic} is well-prepared for any value of $\epsilon$.
 
 
-\begin{remark}[Notable particular cases] The above result  admits same exceptional cases which should be commented on.
+\begin{remark}[Notable particular cases\label{rem:ss-particularcases}] The above result  admits same exceptional cases which should be commented on.
 \begin{enumerate}
 \item  When $k_f=(1+k_p)/2$  we can see that $n_t=1$, so time will not scale and the same (scaled) solutions will be obtained at the same time, albeit on different domains. 
 \item When $k_f=k_p$ the scaling  \eqref{psys-scaling} becomes singular. In this case one could replace it by the modified scaling 
@@ -464,12 +464,15 @@ So in this case it is space that will not scale, and the same (scaled) solutions
 \end{remark}
 
 
-\begin{remark}[Conditions of applicability of the scaling symetry] 
-$$
-k_f > (1+k_p)/2 
-$$
+\begin{remark}[Conditions of applicability of the scaling symmetry\label{rem:s-applicability}] To apply the scaling symmetry we would like to be able to pass from 
+large values of $\tau$ with small data, to large data with small values of $\tau$. This requires that $n_x$ and $n_\tau$ should have different signs. This means that
+ interesting  closures for the flux and pressure are those verifying 
+\begin{equation}\label{eq:ss-applicatbility}
+k_p - 2k_f  + 1 < 0.
+\end{equation}
+Note that this does not preclude the  case $k_f=k_p$, as long as $k_p>1$. In this case, scaling \eqref{psys-scaling-t} must be used.
 \end{remark}
-\todo{COmplete remark: the condition allows to decrease tau when taking larger data, and vice versa}
+
 
 
 

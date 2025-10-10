@@ -438,15 +438,31 @@ Note that when well-prepared data is used (i.e. $v=u_x, w = v_x$) for some value
 $\epsilon$, the initial data \eqref{psys-scaled-ic} is well-prepared for any value of $\epsilon$.
 
 
-\begin{remark}[Notable particular cases] The above result  admits same exceptional cases which should be commented.
-\begin{itemize}
-\item $k_f=k_p$ --> make t =1
-\item  $k_f=(1+k_p)/2$  
-\item  $k_f=(1+k_p)/2$ and $k_f=k_p$, linear case
-\end{itemize}
+\begin{remark}[Notable particular cases] The above result  admits same exceptional cases which should be commented on.
+\begin{enumerate}
+\item  When $k_f=(1+k_p)/2$  we can see that $n_t=1$, so time will not scale and the same (scaled) solutions will be obtained at the same time, albeit on different domains. 
+\item When $k_f=k_p$ the scaling  \eqref{psys-scaling} becomes singular. In this case one could replace it by the modified scaling 
+\begin{subequations}
+\label{psys-scaling-t}
+\begin{align}
+   x & \to \epsilon^{(k_p - 2k_f  + 1)^{-1} (k_p - k_f) }  x & t & \to \epsilon  t \\
+     &\tau  \to \epsilon  \tau \\
+    u & \to \epsilon^{(k_p - 2k_f  + 1)^{-1}} u & v & \to \epsilon^{k_f(k_p - 2k_f  + 1)^{-1}} v.
+\end{align}
+\end{subequations}
+reducing to
+$$
+\begin{aligned}
+x & \to    x & t & \to \epsilon  t \\
+     &\tau  \to \epsilon  \tau \\
+    u & \to \epsilon^{(1  - k_p)^{-1}} u & v & \to \epsilon^{k_p(1-k_p )^{-1}} v.
+\end{aligned}
+$$
+So in this case it is space that will not scale, and the same (scaled) solutions will be obtained at the same positions, albeit at different times. 
+\item  When $k_f=(1+k_p)/2$ and $k_f=k_p$, we have a unique solution which is the linear case $k_f=k_p=1$ which is not very interesting for our purposes.
+\end{enumerate}
 \end{remark}
 
-\todo{COmplete remark: case 1 need to make $n_t$ = 1 and revert the scaling with $x$ not scaling. case 2:  does not scale. case 3: no interest. }
 
 \begin{remark}[Conditions of applicability of the scaling symetry] 
 $$
